@@ -25,6 +25,7 @@
   "dependencies": {
     "@types/validator": "9.4.2",
     "google-libphonenumber": "^3.1.6",
+    "guid-typescript": "1.0.9",
     "validator": "10.4.0"
   },
   "devDependencies": {

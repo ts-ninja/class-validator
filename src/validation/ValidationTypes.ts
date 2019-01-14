@@ -75,6 +75,7 @@ export class ValidationTypes {
     static IS_SURROGATE_PAIR = "isSurrogatePair";
     static IS_URL = "isUrl";
     static IS_UUID = "isUuid";
+    static IS_GUID = "isGuid";
     static LENGTH = "length";
     static IS_UPPERCASE = "isUppercase";
     static MIN_LENGTH = "minLength";
@@ -229,6 +230,8 @@ export class ValidationTypes {
                 return eachPrefix + "$property must be an URL address";
             case this.IS_UUID:
                 return eachPrefix + "$property must be an UUID";
+            case this.IS_GUID:
+                return eachPrefix + "$property must be an GUID";
             case this.IS_UPPERCASE:
                 return eachPrefix + "$property must be uppercase";
             case this.LENGTH:

@@ -5,6 +5,7 @@ import {IsNumberOptions} from "./ValidationTypeOptions";
 import {ValidatorOptions} from "./ValidatorOptions";
 import {ValidationExecutor} from "./ValidationExecutor";
 import {ValidationOptions} from "../decorator/ValidationOptions";
+import { Guid } from "guid-typescript";
 
 /**
  * Validator performs validation of the given object based on its metadata.
@@ -226,6 +227,8 @@ export class Validator {
                 return this.isURL(value, metadata.constraints[0]);
             case ValidationTypes.IS_UUID:
                 return this.isUUID(value, metadata.constraints[0]);
+            case ValidationTypes.IS_GUID:
+                return this.isGUID(value);
             case ValidationTypes.IS_UPPERCASE:
                 return this.isUppercase(value);
             case ValidationTypes.LENGTH:
@@ -706,6 +709,14 @@ export class Validator {
      */
     isUUID(value: string, version?: "3"|"4"|"5"): boolean {
         return typeof value === "string" && this.validatorJs.isUUID(value, version);
+    }
+
+    /**
+     * Checks if the string is a GUID.
+     * If given value is not a string, then it returns false.
+     */
+    isGUID(value: string): boolean {
+        return typeof value === "string" && Guid.isGuid(value);
     }
 
     /**

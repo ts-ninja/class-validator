@@ -957,6 +957,21 @@ export function IsUUID(version?: "3"|"4"|"5", validationOptions?: ValidationOpti
 }
 
 /**
+ * Checks if the string is a GUID
+ */
+export function IsGUID(validationOptions?: ValidationOptions) {
+    return function (object: Object, propertyName: string) {
+        const args: ValidationMetadataArgs = {
+            type: ValidationTypes.IS_GUID,
+            target: object.constructor,
+            propertyName: propertyName,
+            validationOptions: validationOptions
+        };
+        getFromContainer(MetadataStorage).addValidationMetadata(new ValidationMetadata(args));
+    };
+}
+
+/**
  * Checks if the string is uppercase.
  */
 export function IsUppercase(validationOptions?: ValidationOptions) {
